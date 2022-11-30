@@ -52,6 +52,14 @@ export default defineConfig({
         'vue/macros',
         '@vueuse/head',
         '@vueuse/core',
+        {
+          'naive-ui': [
+            'useDialog',
+            'useMessage',
+            'useNotification',
+            'useLoadingBar'
+          ]
+        },
       ],
       dts: 'src/auto-imports.d.ts',
       dirs: [
