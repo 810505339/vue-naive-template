@@ -3,6 +3,8 @@ import { darkTheme, dateZhCN, zhCN } from 'naive-ui'
 // https://github.com/vueuse/head
 // you can use this to manipulate the document head in any components,
 // they will be rendered correctly in the html results with vite-ssg
+const isDark = useDark()
+const toggle = useToggle(isDark)
 useHead({
   title: 'Vitesse',
   meta: [
@@ -20,25 +22,38 @@ useHead({
     },
   ],
 })
+const themeSetting = useDesignSettingStore()
 
 const getThemeOverrides = computed(() => {
+  const appTheme = themeSetting.designSettingLocalStorage.themeColor
+  const lightenStr = lighten(appTheme, 6)
   return {
     common: {
-      primaryColor: '#9c27b0',
-      primaryColorHover: '#9c27b0',
-      primaryColorPressed: '#9c27b0',
-      primaryColorSuppl: '#9c27b0',
+      primaryColor: appTheme,
+      primaryColorHover: lightenStr,
+      primaryColorPressed: lightenStr,
+      primaryColorSuppl: appTheme,
     },
     LoadingBar: {
-      colorLoading: '#9c27b0',
+      colorLoading: appTheme,
     },
   }
 })
+function handleClick() {
+  console.log(1)
+
+  toggle()
+}
 </script>
 
 <template>
-  <NConfigProvider :locale="zhCN" :date-locale="dateZhCN" :theme="darkTheme" :theme-overrides="getThemeOverrides">
+  {{ isDark }}
+  <button @click="handleClick">
+    切换
+  </button>
+  <NConfigProvider :locale="zhCN" :date-locale="dateZhCN" :theme-overrides="getThemeOverrides">
     <RouterView />
+    <ThemeSetting />
   </NConfigProvider>
 </template>
 

@@ -16,12 +16,15 @@ const { t } = useI18n()
 
 <template>
   <div>
+    <n-button type="primary">
+      按钮
+    </n-button>
     <div text-4xl>
       <div i-carbon-campsite inline-block />
     </div>
     <p>
       <a rel="noreferrer" href="https://github.com/antfu/vitesse" target="_blank">
-        Vitesse
+        <div>{{ isDark }}</div>
       </a>
     </p>
     <p>
@@ -30,21 +33,13 @@ const { t } = useI18n()
 
     <div py-4 />
 
-    <TheInput
-      v-model="name"
-      placeholder="What's your name?"
-      autocomplete="false"
-      @keydown.enter="go"
-    />
+    <TheInput v-model="name" placeholder="What's your name?" autocomplete="false" @keydown.enter="go" />
     <label class="hidden" for="input">{{ t('intro.whats-your-name') }}</label>
 
     <div>
-      <button
-        btn m-3 text-sm
-        :disabled="!name"
-        @click="go"
-      >
+      <button btn m-3 text-sm :disabled="!name" @click="go">
         {{ t('button.go') }}
+        <div>{{ isDark }}</div>
       </button>
     </div>
   </div>

@@ -65,7 +65,8 @@ export default defineConfig({
       dts: 'src/auto-imports.d.ts',
       dirs: [
         'src/composables',
-        'src/store',
+        'src/store/**',
+        'src/utils/**',
       ],
       vueTemplate: true,
     }),
