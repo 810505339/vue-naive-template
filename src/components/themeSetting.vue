@@ -1,5 +1,5 @@
 <script setup lang="ts">
-const show = ref(true) // 是否展示设置
+const show = ref(false) // 是否展示设置
 const { designSettingLocalStorage } = useDesignSettingStore()
 
 const appThemeList: string[] = [
@@ -26,7 +26,7 @@ const themeText = computed(() => {
   return !isDark ? '浅色主题' : '深色主题'
 })
 const handleChange = () => {
-
+  toggleDark()
 }
 </script>
 
@@ -45,7 +45,7 @@ const handleChange = () => {
 
         <n-popover placement="bottom" trigger="hover">
           <template #trigger>
-            <n-switch v-model:value="isDark" @update:value="handleChange">
+            <n-switch :value="isDark" @update:value="handleChange">
               <template #checked>
                 <n-icon text="#ffd93b">
                   <svg
@@ -84,7 +84,10 @@ const handleChange = () => {
         <n-divider title-placement="center">
           系统主题
         </n-divider>
-        <n-color-picker v-model:value="designSettingLocalStorage.themeColor" :modes="['hex']" :swatches="appThemeList" />
+        <n-color-picker
+          v-model:value="designSettingLocalStorage.themeColor" :modes="['hex']"
+          :swatches="appThemeList"
+        />
       </div>
     </n-drawer-content>
   </n-drawer>

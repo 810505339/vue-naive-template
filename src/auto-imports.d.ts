@@ -44,6 +44,7 @@ declare global {
   const isReactive: typeof import('vue')['isReactive']
   const isReadonly: typeof import('vue')['isReadonly']
   const isRef: typeof import('vue')['isRef']
+  const lighten: typeof import('./utils/index')['lighten']
   const makeDestructurable: typeof import('@vueuse/core')['makeDestructurable']
   const markRaw: typeof import('vue')['markRaw']
   const nextTick: typeof import('vue')['nextTick']
@@ -142,6 +143,7 @@ declare global {
   const useDebounce: typeof import('@vueuse/core')['useDebounce']
   const useDebounceFn: typeof import('@vueuse/core')['useDebounceFn']
   const useDebouncedRefHistory: typeof import('@vueuse/core')['useDebouncedRefHistory']
+  const useDesignSettingStore: typeof import('./store/modules/designSetting')['useDesignSettingStore']
   const useDeviceMotion: typeof import('@vueuse/core')['useDeviceMotion']
   const useDeviceOrientation: typeof import('@vueuse/core')['useDeviceOrientation']
   const useDevicePixelRatio: typeof import('@vueuse/core')['useDevicePixelRatio']
@@ -328,6 +330,7 @@ declare module 'vue' {
     readonly isReactive: UnwrapRef<typeof import('vue')['isReactive']>
     readonly isReadonly: UnwrapRef<typeof import('vue')['isReadonly']>
     readonly isRef: UnwrapRef<typeof import('vue')['isRef']>
+    readonly lighten: UnwrapRef<typeof import('./utils/index')['lighten']>
     readonly makeDestructurable: UnwrapRef<typeof import('@vueuse/core')['makeDestructurable']>
     readonly markRaw: UnwrapRef<typeof import('vue')['markRaw']>
     readonly nextTick: UnwrapRef<typeof import('vue')['nextTick']>
@@ -426,6 +429,7 @@ declare module 'vue' {
     readonly useDebounce: UnwrapRef<typeof import('@vueuse/core')['useDebounce']>
     readonly useDebounceFn: UnwrapRef<typeof import('@vueuse/core')['useDebounceFn']>
     readonly useDebouncedRefHistory: UnwrapRef<typeof import('@vueuse/core')['useDebouncedRefHistory']>
+    readonly useDesignSettingStore: UnwrapRef<typeof import('./store/modules/designSetting')['useDesignSettingStore']>
     readonly useDeviceMotion: UnwrapRef<typeof import('@vueuse/core')['useDeviceMotion']>
     readonly useDeviceOrientation: UnwrapRef<typeof import('@vueuse/core')['useDeviceOrientation']>
     readonly useDevicePixelRatio: UnwrapRef<typeof import('@vueuse/core')['useDevicePixelRatio']>

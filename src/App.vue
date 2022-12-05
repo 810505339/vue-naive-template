@@ -3,8 +3,7 @@ import { darkTheme, dateZhCN, zhCN } from 'naive-ui'
 // https://github.com/vueuse/head
 // you can use this to manipulate the document head in any components,
 // they will be rendered correctly in the html results with vite-ssg
-const isDark = useDark()
-const toggle = useToggle(isDark)
+
 useHead({
   title: 'Vitesse',
   meta: [
@@ -39,12 +38,14 @@ const getThemeOverrides = computed(() => {
     },
   }
 })
+const theme = computed(() => {
+  return isDark.value ? darkTheme : null
+})
 </script>
 
 <template>
-  <NConfigProvider :locale="zhCN" :date-locale="dateZhCN" :theme-overrides="getThemeOverrides">
+  <NConfigProvider :locale="zhCN" :date-locale="dateZhCN" :theme-overrides="getThemeOverrides" :theme="theme">
     <RouterView />
-    <ThemeSetting />
   </NConfigProvider>
 </template>
 
