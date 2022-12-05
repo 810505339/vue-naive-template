@@ -9,6 +9,7 @@ import '@unocss/reset/normalize.css'
 import './styles/main.css'
 import 'uno.css'
 
+console.log(generatedRoutes)
 const routes = setupLayouts(generatedRoutes)
 
 // https://github.com/antfu/vite-ssg

@@ -39,18 +39,9 @@ const getThemeOverrides = computed(() => {
     },
   }
 })
-function handleClick() {
-  console.log(1)
-
-  toggle()
-}
 </script>
 
 <template>
-  {{ isDark }}
-  <button @click="handleClick">
-    切换
-  </button>
   <NConfigProvider :locale="zhCN" :date-locale="dateZhCN" :theme-overrides="getThemeOverrides">
     <RouterView />
     <ThemeSetting />
