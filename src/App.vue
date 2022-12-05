@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { darkTheme, dateZhCN, zhCN } from 'naive-ui'
 // https://github.com/vueuse/head
 // you can use this to manipulate the document head in any components,
 // they will be rendered correctly in the html results with vite-ssg
@@ -19,8 +20,28 @@ useHead({
     },
   ],
 })
+
+const getThemeOverrides = computed(() => {
+  return {
+    common: {
+      primaryColor: '#9c27b0',
+      primaryColorHover: '#9c27b0',
+      primaryColorPressed: '#9c27b0',
+      primaryColorSuppl: '#9c27b0',
+    },
+    LoadingBar: {
+      colorLoading: '#9c27b0',
+    },
+  }
+})
 </script>
 
 <template>
-  <RouterView />
+  <NConfigProvider :locale="zhCN" :date-locale="dateZhCN" :theme="darkTheme" :theme-overrides="getThemeOverrides">
+    <RouterView />
+  </NConfigProvider>
 </template>
+
+<style>
+
+</style>
