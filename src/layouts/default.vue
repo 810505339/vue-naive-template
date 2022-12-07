@@ -9,9 +9,7 @@
           <TheMenu />
         </n-layout-sider>
         <n-layout-content bg="slate-50 dark:black">
-          <div m5 bg="white dark:#18181c" rounded p5 min-h="[calc(100%-80px)]">
-            <RouterView />
-          </div>
+          <DefaultRouterView />
         </n-layout-content>
       </n-layout>
     </n-layout>

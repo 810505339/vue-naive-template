@@ -6,7 +6,7 @@ import type { UserModule } from './types'
 import generatedRoutes from '~pages'
 
 import '@unocss/reset/normalize.css'
-import './styles/main.css'
+import './styles/main.less'
 import 'uno.css'
 
 console.log(generatedRoutes)

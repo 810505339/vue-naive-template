@@ -1,21 +1,36 @@
 <script setup lang="ts">
 import type { MenuOption } from 'naive-ui'
+import { RouterLink } from 'vue-router'
 const menuOptions: MenuOption[] = [
   {
-    label: '且听风吟',
-    key: 'hear-the-wind-sing',
-    href: 'https://baike.baidu.com/item/%E4%B8%94%E5%90%AC%E9%A3%8E%E5%90%9F/3199',
+    label: () => {
+      return h(RouterLink, {
+        to: {
+          name: 'index',
+        },
+
+      },
+      {
+        default: () => '回家',
+      })
+    },
+    key: 'index',
+
   },
   {
-    label: '1973年的弹珠玩具',
-    key: 'pinball-1973',
-    disabled: true,
-    children: [
-      {
-        label: '鼠',
-        key: 'rat',
+    label: () => {
+      return h(RouterLink, {
+        to: {
+          name: 'test',
+        },
+
       },
-    ],
+      {
+        default: () => 'test',
+      })
+    },
+    key: 'test',
+
   },
   {
     label: '寻羊冒险记',
@@ -72,5 +87,5 @@ const menuOptions: MenuOption[] = [
 </script>
 
 <template>
-  <n-menu :options="menuOptions"  />
+  <n-menu :options="menuOptions" />
 </template>

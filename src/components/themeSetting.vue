@@ -1,6 +1,15 @@
 <script setup lang="ts">
 const show = ref(false) // 是否展示设置
-const { designSettingLocalStorage } = useDesignSettingStore()
+const animates = [
+  { value: 'zoom-fade', label: '渐变' },
+  { value: 'zoom-out', label: '闪现' },
+  { value: 'fade-slide', label: '滑动' },
+  { value: 'fade', label: '消退' },
+  { value: 'fade-bottom', label: '底部消退' },
+  { value: 'fade-scale', label: '缩放消退' },
+]
+
+const { designSettingLocalStorage, animationLocalStorage } = useDesignSettingStore()
 
 const appThemeList: string[] = [
   '#2d8cf0',
@@ -45,7 +54,7 @@ const handleChange = () => {
 
         <n-popover placement="bottom" trigger="hover">
           <template #trigger>
-            <n-switch :value="isDark" @update:value="handleChange">
+            <n-switch :value="isDark" class="dark-switch" @update:value="handleChange">
               <template #checked>
                 <n-icon text="#ffd93b">
                   <svg
@@ -88,13 +97,27 @@ const handleChange = () => {
           v-model:value="designSettingLocalStorage.themeColor" :modes="['hex']"
           :swatches="appThemeList"
         />
+        <n-divider title-placement="center">
+          动画
+        </n-divider>
+        <div flex items-center justify-between mb5>
+          <div>切换动画</div>
+          <n-switch v-model:value="animationLocalStorage.isAnimation" />
+        </div>
+        <div flex items-center justify-between>
+          <div>动画类型</div>
+          <n-select
+            v-model:value="animationLocalStorage.animation" w40 :consistent-menu-width="false"
+            :options="animates"
+          />
+        </div>
       </div>
     </n-drawer-content>
   </n-drawer>
 </template>
 
-<style>
-.n-switch.n-switch--round .n-switch__rail {
+<style scoped>
+:deep(.dark-switch .n-switch__rail) {
   background-color: #000e1c;
 }
 </style>

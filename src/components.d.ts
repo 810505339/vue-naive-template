@@ -7,8 +7,8 @@ export {}
 
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
+    DefaultRouterView: typeof import('./components/defaultRouterView.vue')['default']
     NButton: typeof import('naive-ui')['NButton']
-    NCard: typeof import('naive-ui')['NCard']
     NColorPicker: typeof import('naive-ui')['NColorPicker']
     NConfigProvider: typeof import('naive-ui')['NConfigProvider']
     NDivider: typeof import('naive-ui')['NDivider']
@@ -21,6 +21,7 @@ declare module '@vue/runtime-core' {
     NLayoutSider: typeof import('naive-ui')['NLayoutSider']
     NMenu: typeof import('naive-ui')['NMenu']
     NPopover: typeof import('naive-ui')['NPopover']
+    NSelect: typeof import('naive-ui')['NSelect']
     NSwitch: typeof import('naive-ui')['NSwitch']
     README: typeof import('./components/README.md')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
