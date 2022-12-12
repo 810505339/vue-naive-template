@@ -26,10 +26,25 @@ const menuOptions: MenuOption[] = [
 
       },
       {
-        default: () => 'test',
+        default: () => '测试',
       })
     },
     key: 'test',
+
+  },
+  {
+    label: () => {
+      return h(RouterLink, {
+        to: {
+          name: 'login',
+        },
+
+      },
+      {
+        default: () => '登录',
+      })
+    },
+    key: 'login',
 
   },
   {

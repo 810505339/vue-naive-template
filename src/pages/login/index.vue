@@ -1,4 +1,5 @@
 <script setup lang="ts">
+const router = useRouter()
 onMounted(() => {
   nextTick(() => {
     // wxe60924bc3543a091
@@ -16,8 +17,10 @@ onMounted(() => {
 </script>
 
 <template>
+  <n-button type="primary" @click="router.back()">
+    返回
+  </n-button>
   <div id="login_container" />
-  login
 </template>
 
 <route lang="yaml">
