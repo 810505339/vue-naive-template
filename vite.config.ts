@@ -60,6 +60,9 @@ export default defineConfig({
             'useNotification',
             'useLoadingBar',
           ],
+          'axios': [
+            ['default', 'axios'],
+          ],
         },
       ],
       dts: 'src/auto-imports.d.ts',
