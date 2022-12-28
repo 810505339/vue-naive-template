@@ -17,12 +17,12 @@ useResizeObserver(carousel, (entries) => {
     <n-skeleton width="578px" height="100%" rounded-3xl translate-x="72%" translate-z="-100px" absolute left="50%" />
   </div>
   <n-carousel
-    v-else ref="carousel" :effect="isCard ? 'card' : 'slide'" h="320px"
+    v-else ref="carousel" :effect="isCard ? 'card' : 'slide'" h="220px" md:h="320px"
     prev-slide-style="transform: translateX(-180%) translateZ(-100px);"
-    next-slide-style="transform: translateX(80%) translateZ(-100px);"
+    next-slide-style="transform: translateX(80%) translateZ(-100px);" px="5" md:px="0"
   >
     <n-carousel-item v-for="item in data" :key="item.id" :style="{ width: isCard ? '40%' : '100%' }">
-      <img :src="item.image" rounded-3xl w="100%" h="270px">
+      <img :src="item.image" rounded-3xl w="100%">
     </n-carousel-item>
   </n-carousel>
 </template>

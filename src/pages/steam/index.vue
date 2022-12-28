@@ -16,6 +16,7 @@ watch([title, selected], () => {
 })
 async function getData() {
   offset.value = 0
+  list.value = []
   await execute({
     params: {
       title: `ilike.%${title.value}%`,
@@ -24,9 +25,8 @@ async function getData() {
       order: `${selected.value}.nullslast`,
     },
   })
-  console.log(data.value)
-
   list.value = data.value
+  offset.value = 10
 }
 
 useInfiniteScroll(
@@ -64,14 +64,15 @@ useInfiniteScroll(
       </div>
     </div>
     <SteamSearch v-model:value="search" v-model:selected="selected" />
-    <SteamList ref="el" :list="list" />
-
-    <div v-if="isLoading" overflow-hidden relative px="5" sm:px="15">
-      <n-skeleton v-for="i in 3" :key="i" height="270px" rounded-3xl my5 />
-    </div>
-    <i v-if="isLoading" block i-eos-icons-loading text="38px" m-auto py8 />
     <div v-if="list.length <= 0 && isFinished" m-auto py8 text-center text="40px">
       noMore
+    </div>
+    <div v-else>
+      <SteamList ref="el" :list="list" />
+      <div v-if="isLoading" overflow-hidden relative px="5" sm:px="15">
+        <n-skeleton v-for="i in 3" :key="i" height="270px" rounded-3xl my5 />
+      </div>
+      <i v-if="isLoading" block i-eos-icons-loading text="38px" m-auto py8 />
     </div>
   </div>
 </template>
