@@ -63,6 +63,10 @@ export default defineConfig({
           'axios': [
             ['default', 'axios'],
           ],
+          '@vueuse/integrations/useAxios': [
+            // named imports
+            'useAxios', // import { useMouse } from '@vueuse/core',
+          ],
         },
       ],
       dts: 'src/auto-imports.d.ts',
@@ -82,6 +86,8 @@ export default defineConfig({
       include: [/\.vue$/, /\.vue\?vue/, /\.md$/],
       dts: 'src/components.d.ts',
       resolvers: [NaiveUiResolver()],
+      directoryAsNamespace: true,
+      collapseSamePrefixes: true,
     }),
 
     // https://github.com/antfu/unocss

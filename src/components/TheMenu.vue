@@ -1,6 +1,12 @@
 <script setup lang="ts">
 import type { MenuOption } from 'naive-ui'
 import { RouterLink } from 'vue-router'
+const route = useRoute()
+const selectedKey = ref()
+
+watchEffect(() => {
+  selectedKey.value = route.name
+})
 const menuOptions: MenuOption[] = [
   {
     label: () => {
@@ -98,9 +104,23 @@ const menuOptions: MenuOption[] = [
       },
     ],
   },
+  {
+    label() {
+      return h(RouterLink, {
+        to: {
+          name: 'steam',
+        },
+
+      },
+      {
+        default: () => 'steam',
+      })
+    },
+
+  },
 ]
 </script>
 
 <template>
-  <n-menu :options="menuOptions" />
+  <n-menu v-model:value="selectedKey" :options="menuOptions" />
 </template>

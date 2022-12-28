@@ -34,5 +34,14 @@ export default defineConfig({
     transformerDirectives(),
     transformerVariantGroup(),
   ],
+  preflights: [
+    {
+      getCSS: () => `
+        .n-button {
+          background-color: var(--n-color)
+         }
+      `,
+    },
+  ],
   safelist: 'prose prose-sm m-auto text-left'.split(' '),
 })
