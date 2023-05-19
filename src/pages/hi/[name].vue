@@ -1,12 +1,5 @@
 <script setup lang="ts">
-const props = defineProps<{ name: string }>()
-const router = useRouter()
-const user = useUserStore()
-const { t } = useI18n()
 
-watchEffect(() => {
-  user.setNewName(props.name)
-})
 </script>
 
 <template>
@@ -36,10 +29,7 @@ watchEffect(() => {
     </template>
 
     <div>
-      <button
-        btn m="3 t6" text-sm
-        @click="router.back()"
-      >
+      <button btn m="3 t6" text-sm @click="router.back()">
         {{ t('button.back') }}
       </button>
     </div>

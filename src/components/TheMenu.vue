@@ -27,15 +27,15 @@ const menuOptions: MenuOption[] = [
     label: () => {
       return h(RouterLink, {
         to: {
-          name: 'test',
+          name: 'index',
         },
 
       },
       {
-        default: () => '测试',
+        default: () => '回家',
       })
     },
-    key: 'test',
+    key: 'index',
 
   },
   {
