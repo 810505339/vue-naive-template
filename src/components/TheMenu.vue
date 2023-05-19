@@ -1,126 +1,65 @@
 <script setup lang="ts">
-import type { MenuOption } from 'naive-ui'
-import { RouterLink } from 'vue-router'
 const route = useRoute()
 const selectedKey = ref()
 
 watchEffect(() => {
   selectedKey.value = route.name
 })
-const menuOptions: MenuOption[] = [
+
+const select = ref('Discover')
+const menu = [
   {
-    label: () => {
-      return h(RouterLink, {
-        to: {
-          name: 'index',
-        },
-
-      },
-      {
-        default: () => '回家',
-      })
-    },
-    key: 'index',
-
-  },
-  {
-    label: () => {
-      return h(RouterLink, {
-        to: {
-          name: 'index',
-        },
-
-      },
-      {
-        default: () => '回家',
-      })
-    },
-    key: 'index',
-
-  },
-  {
-    label: () => {
-      return h(RouterLink, {
-        to: {
-          name: 'login',
-        },
-
-      },
-      {
-        default: () => '登录',
-      })
-    },
-    key: 'login',
-
-  },
-  {
-    label: '寻羊冒险记',
-    key: 'a-wild-sheep-chase',
-    disabled: true,
-  },
-  {
-    label: '舞，舞，舞',
-    key: 'dance-dance-dance',
+    label: 'MENU',
     children: [
       {
-        type: 'group',
-        label: '人物',
-        key: 'people',
-        children: [
-          {
-            label: '叙事者',
-            key: 'narrator',
-          },
-          {
-            label: '羊男',
-            key: 'sheep-man',
-          },
-        ],
+        icon: 'i-heroicons:home-20-solid',
+        label: 'Discover',
       },
       {
-        label: '饮品',
-        key: 'beverage',
-        children: [
-          {
-            label: '威士忌',
-            key: 'whisky',
-            href: 'https://baike.baidu.com/item/%E5%A8%81%E5%A3%AB%E5%BF%8C%E9%85%92/2959816?fromtitle=%E5%A8%81%E5%A3%AB%E5%BF%8C&fromid=573&fr=aladdin',
-          },
-        ],
+        icon: 'i-heroicons:square-2-stack-20-solid',
+        label: 'Explorer',
       },
       {
-        label: '食物',
-        key: 'food',
-        children: [
-          {
-            label: '三明治',
-            key: 'sandwich',
-          },
-        ],
-      },
-      {
-        label: '过去增多，未来减少',
-        key: 'the-past-increases-the-future-recedes',
+        icon: 'i-heroicons:magnifying-glass',
+        label: 'Search',
       },
     ],
   },
-  {
-    label() {
-      return h(RouterLink, {
-        to: {
-          name: 'steam',
-        },
-
-      },
-      {
-        default: () => 'steam',
-      })
-    },
-
-  },
 ]
+
+function changeMenu(selectedKey: string) {
+  select.value = selectedKey
+}
+
 </script>
 
 <template>
-  <n-menu v-model:value="selectedKey" :options="menuOptions" />
+  <div>
+    <div font-700 text-22px text="#4343ef" block flex items-center h100px w="100%" justify-center cursor-pointer>
+      <span w-24px h-24px rounded-full bg="#4343ef" text-white inline flex items-center justify-center>
+        <i i-heroicons-musical-note-20-solid inline-block text-10px />
+      </span>
+      <div pl-4>
+        Mytones
+      </div>
+    </div>
+    <div>
+      <div v-for="(m, i) in menu" :key="i">
+        <div text="#24242e  18px tracking-normal" dark:text-gray-200 pl-42px>
+          {{ m.label }}
+        </div>
+        <div>
+          <div v-for="(c, j) in m.children" :key="j" h-46px pl-42px flex items-center cursor-pointer hover="bg-gray-50"
+            dark:hover="bg-gray-1/2" :class="[{ 'text-#4343ef': select == c.label }]" @click="changeMenu(c.label)"
+            relative>
+            <i :class="[c.icon]" inline-block h-16px w-16px />
+            <div pl-23px text-16px font-400 tracking-normal>
+              {{ c.label }}
+            </div>
+            <div absolute w6px h46px bg="#4343ef" top="0" right-0 v-show="c.label === select"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </template>

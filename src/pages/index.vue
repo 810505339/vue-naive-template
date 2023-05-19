@@ -1,8 +1,6 @@
 <script setup lang="ts">
-const router = useRouter()
-router.push({
-  name: 'steam',
-})
+import { instance } from '~/api/index'
+const { data } = useAxios('/banner?type=2', instance)
 </script>
 
 <template />

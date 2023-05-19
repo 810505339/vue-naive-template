@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { storeToRefs } from 'pinia'
+
 const show = ref(false) // 是否展示设置
 const animates = [
   { value: 'zoom-fade', label: '渐变' },
@@ -9,7 +11,7 @@ const animates = [
   { value: 'fade-scale', label: '缩放消退' },
 ]
 
-const { designSettingLocalStorage, animationLocalStorage } = useDesignSettingStore()
+const { designSettingLocalStorage, animationLocalStorage } = storeToRefs(useDesignSettingStore())
 
 const appThemeList: string[] = [
   '#2d8cf0',
@@ -29,11 +31,11 @@ const appThemeList: string[] = [
   '#1768AC',
   '#FB9300',
   '#FC5404',
-
 ]
 const themeText = computed(() => {
   return !isDark ? '浅色主题' : '深色主题'
 })
+
 const handleChange = () => {
   toggleDark()
 }
@@ -58,8 +60,8 @@ const handleChange = () => {
               <template #checked>
                 <n-icon text="#ffd93b">
                   <svg
-                    xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-                    viewBox="0 0 512 512" data-v-bd099a11=""
+                    xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 512 512"
+                    data-v-bd099a11=""
                   >
                     <path d="M234 26h44v92h-44z" fill="currentColor" />
                     <path d="M234 394h44v92h-44z" fill="currentColor" />
@@ -76,8 +78,8 @@ const handleChange = () => {
               <template #unchecked>
                 <n-icon text="#ffd93b">
                   <svg
-                    xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-                    viewBox="0 0 512 512" data-v-bd099a11=""
+                    xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 512 512"
+                    data-v-bd099a11=""
                   >
                     <path
                       d="M264 480A232 232 0 0 1 32 248c0-94 54-178.28 137.61-214.67a16 16 0 0 1 21.06 21.06C181.07 76.43 176 104.66 176 136c0 110.28 89.72 200 200 200c31.34 0 59.57-5.07 81.61-14.67a16 16 0 0 1 21.06 21.06C442.28 426 358 480 264 480z"
@@ -93,10 +95,7 @@ const handleChange = () => {
         <n-divider title-placement="center">
           系统主题
         </n-divider>
-        <n-color-picker
-          v-model:value="designSettingLocalStorage.themeColor" :modes="['hex']"
-          :swatches="appThemeList"
-        />
+        <n-color-picker v-model:value="designSettingLocalStorage.themeColor" :modes="['hex']" :swatches="appThemeList" />
         <n-divider title-placement="center">
           动画
         </n-divider>
