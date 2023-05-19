@@ -8,3 +8,12 @@ export const instance = axios.create({
   },
 })
 
+instance.interceptors.response.use(async (config) => {
+  // router
+  router.push('/login')
+  return config
+})
+
+instance.interceptors.response.use((response) => {
+  return response
+})
