@@ -5,6 +5,7 @@ specifiers:
   '@iconify-json/carbon': ^1.1.16
   '@iconify-json/eos-icons': ^1.1.6
   '@iconify-json/heroicons': ^1.1.10
+  '@iconify-json/jam': ^1.1.4
   '@iconify-json/material-symbols': ^1.1.42
   '@intlify/vite-plugin-vue-i18n': ^6.0.3
   '@types/markdown-it-link-attributes': ^3.0.1
@@ -56,6 +57,7 @@ specifiers:
 
 dependencies:
   '@iconify-json/eos-icons': 1.1.6
+  '@iconify-json/jam': 1.1.4
   '@iconify-json/material-symbols': 1.1.42
   '@unocss/reset': 0.47.6
   '@vueuse/core': 9.13.0_vue@3.3.4
@@ -2046,6 +2048,12 @@ packages:
     dependencies:
       '@iconify/types': 2.0.0
     dev: true
+
+  /@iconify-json/jam/1.1.4:
+    resolution: {integrity: sha512-Dc5kkgbEchLfi7qh2Eoa+UHoprCh2Q0QsJy2PsMl43uX9etSGqC+ntdfBc80vf4/CBJ/quvvgJ6PzYA7e0bjSA==}
+    dependencies:
+      '@iconify/types': 2.0.0
+    dev: false
 
   /@iconify-json/material-symbols/1.1.42:
     resolution: {integrity: sha512-GVCi+035oCXCjpzTzjBx/Qgnsv4B2iJcLQCRqhNuY/Le9BmvHVg2+dHGMWc6iBgspjWu11SzRnz4wfs3XJGp1w==}
