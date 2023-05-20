@@ -183,7 +183,7 @@ export default defineConfig({
     proxy: {
       // 带选项写法：http://localhost:5173/api/bar -> http://jsonplaceholder.typicode.com/bar
       '/api': {
-        target: 'https://netease-music-api-self.vercel.app',
+        target: 'https://service-mt9kujet-1304075038.cd.apigw.tencentcs.com/release/',
         changeOrigin: true,
         rewrite: (path) => {
           return path.replace(/^\/api/, '')

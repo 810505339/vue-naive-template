@@ -10,7 +10,7 @@ function tagStyle(color:string){
 </script>
 
 <template>
-  <div w="676px">
+  <div max-w="676px">
     <n-carousel
     direction="vertical"
     dot-placement="right"
@@ -18,8 +18,8 @@ function tagStyle(color:string){
     draggable
     autoplay
   >
-    <div v-for="item in data?.banners" :key="item.targetId" w="100%" relative>
-      <img :src="item.imageUrl" w="100%" h="240px" object-fill rounded-xl>
+    <div v-for="item in data?.banners" :key="item.targetId"  relative rounded-xl>
+      <img :src="item.imageUrl" w="100%"  h="240px" object-fill rounded-xl >
       <div absolute bottom="0" z-10 left="0" rounded py-2px px-1  text-12px font-400 text-white  :class="[tagStyle(item.titleColor),]"   >{{item.typeTitle}}</div>
     </div>
     <template #dots="{ total, currentIndex, to }">
