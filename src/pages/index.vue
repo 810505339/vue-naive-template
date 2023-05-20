@@ -1,11 +1,9 @@
 <script setup lang="ts">
-import { instance } from '~/api/index'
-const { data } = useAxios('/banner?type=2', instance)
+const router = useRouter()
+router.push({
+  name: 'discover',
+})
 </script>
 
-<template>
-  <n-button type="primary">
-    按钮
-  </n-button>
-</template>
+<template />
 

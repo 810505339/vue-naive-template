@@ -1,5 +1,7 @@
 <script setup lang="ts">
-const { animationLocalStorage } = useDesignSettingStore()
+import { storeToRefs } from 'pinia';
+
+const { animationLocalStorage } = storeToRefs(useDesignSettingStore())
 </script>
 
 <template>

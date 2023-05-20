@@ -1,11 +1,5 @@
 <script setup lang="ts">
-const route = useRoute()
-const selectedKey = ref()
-
-watchEffect(() => {
-  selectedKey.value = route.name
-})
-
+const router = useRouter()
 const select = ref('Discover')
 const menu = [
   {
@@ -80,6 +74,10 @@ const menu = [
 
 function changeMenu(selectedKey: string) {
   select.value = selectedKey
+ 
+  router.push({
+    name:`${selectedKey.toLocaleLowerCase()}`
+  });
 }
 
 </script>
