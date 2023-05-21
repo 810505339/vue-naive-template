@@ -32,6 +32,7 @@ specifiers:
   naive-ui: ^2.34.3
   nprogress: ^0.2.0
   pinia: ^2.1.3
+  pinia-plugin-persistedstate: ^3.1.0
   pnpm: ^7.32.4
   qrcode: ^1.5.3
   shiki: ^0.11.1
@@ -71,6 +72,7 @@ dependencies:
   naive-ui: 2.34.3_vue@3.3.4
   nprogress: 0.2.0
   pinia: 2.1.3_typescript@4.9.5+vue@3.3.4
+  pinia-plugin-persistedstate: 3.1.0_pinia@2.1.3
   qrcode: 1.5.3
   vue: 3.3.4
   vue-demi: 0.13.11_vue@3.3.4
@@ -8133,6 +8135,14 @@ packages:
     engines: {node: '>=6'}
     dev: true
     optional: true
+
+  /pinia-plugin-persistedstate/3.1.0_pinia@2.1.3:
+    resolution: {integrity: sha512-8UN+vYMEPBdgNLwceY08mi5olI0wkYaEb8b6hD6xW7SnBRuPydWHlEhZvUWgNb/ibuf4PvufpvtS+dmhYjJQOw==}
+    peerDependencies:
+      pinia: ^2.0.0
+    dependencies:
+      pinia: 2.1.3_typescript@4.9.5+vue@3.3.4
+    dev: false
 
   /pinia/2.1.3_typescript@4.9.5+vue@3.3.4:
     resolution: {integrity: sha512-XNA/z/ye4P5rU1pieVmh0g/hSuDO98/a5UC8oSP0DNdvt6YtetJNHTrXwpwsQuflkGT34qKxAEcp7lSxXNjf/A==}
