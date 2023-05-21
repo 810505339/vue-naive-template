@@ -7,9 +7,8 @@ import type { UserModule } from './types'
 import generatedRoutes from '~pages'
 
 import '@unocss/reset/tailwind.css'
-import './styles/main.less'
 import 'uno.css'
-
+import './styles/main.less'
 const routes = setupLayouts(generatedRoutes)
 
 // https://github.com/antfu/vite-ssg

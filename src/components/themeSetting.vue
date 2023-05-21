@@ -42,7 +42,7 @@ const handleChange = () => {
 </script>
 
 <template>
-  <div fixed top="50%" rounded flex items-center right="0">
+  <div fixed z="9999" top="50%" rounded flex items-center right="0">
     <n-button tertiary type="primary" @click="(show = true)">
       <i i-carbon-settings />
     </n-button>

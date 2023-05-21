@@ -7,7 +7,7 @@ const { animationLocalStorage } = storeToRefs(useDesignSettingStore())
 <template>
   <RouterView v-slot="{ Component, route }">
     <transition :name="animationLocalStorage.isAnimation ? animationLocalStorage.animation : ''" mode="out-in" appear>
-      <div :key="route.path" m5 bg="white dark:#18181c" rounded p5 min-h="[calc(100%-108px)]">
+      <div :key="route.path" m5 bg=" " rounded p5 min-h="[calc(100%-108px)]">
         <component :is="Component" />
       </div>
     </transition>

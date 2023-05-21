@@ -8,13 +8,10 @@ export {}
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
     DefaultRouterView: typeof import('./components/defaultRouterView.vue')['default']
+    PlayList: typeof import('./components/playList/index.vue')['default']
     README: typeof import('./components/README.md')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
-    SteamHead: typeof import('./components/steam/head.vue')['default']
-    SteamList: typeof import('./components/steam/List.vue')['default']
-    SteamSearch: typeof import('./components/steam/search.vue')['default']
-    SteamSwiper: typeof import('./components/steam/swiper.vue')['default']
     TheCounter: typeof import('./components/TheCounter.vue')['default']
     TheFooter: typeof import('./components/TheFooter.vue')['default']
     TheHeader: typeof import('./components/TheHeader.vue')['default']

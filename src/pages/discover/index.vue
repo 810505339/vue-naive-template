@@ -10,7 +10,7 @@ function tagStyle(color:string){
 </script>
 
 <template>
-  <div max-w="676px">
+  <div max-w="676px" mx="32px">
     <n-carousel
     direction="vertical"
     dot-placement="right"
@@ -34,6 +34,7 @@ function tagStyle(color:string){
     </template>
   </n-carousel>
   </div>
+  <PlayList></PlayList>
 </template>
 <style scoped>
 .carousel-img {
@@ -96,6 +97,6 @@ function tagStyle(color:string){
 
 .custom-dots li.is-active {
   height: 40px;
-  background: #fff;
+  background: #4343ef;
 }
 </style>

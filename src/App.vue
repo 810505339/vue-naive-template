@@ -45,7 +45,9 @@ const theme = computed(() => {
 
 <template>
   <NConfigProvider :theme-overrides="getThemeOverrides" :theme="theme">
-    <RouterView />
+    <n-message-provider>
+      <RouterView />
+    </n-message-provider>
   </NConfigProvider>
 </template>
 
