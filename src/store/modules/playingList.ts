@@ -10,7 +10,7 @@ const usePlayingList = defineStore('playingList', () => {
   // 正在播放列表
   const playingList = ref<Array<any>>([])
   // 正在播放的index
-  const selectIndex = ref(0)
+  const selectIndex = ref('')
 
   const selectItem = computed(() => {
     return playingList.value[selectIndex.value]
@@ -36,6 +36,8 @@ const usePlayingList = defineStore('playingList', () => {
   // 清空播放列表
   function clear() {
     playingList.value = []
+    console.log('清除播放')
+
     selectIndex.value = 0
   }
   // 上一曲

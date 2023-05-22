@@ -131,9 +131,9 @@ watch(()=>currentTime.value,()=>{
     <div px="24px">
       <div font-500 text-18px  text="#787887 center" mb-10px >NOW PLAYING</div>
       <div text-center>
-        <img rounded-16px w="200px" h="120px" inline-block blur="0.5"  :src="playListStore.selectItem.al.picUrl"/>
-        <div text="#24242e dark:white 24px" font-700 my-4px>{{playListStore.selectItem.name}}</div>
-        <div text="#4d4d56 16px" font-500 mb-8px>{{playListStore.selectItem.ar.map((p:any)=>p.name).join('/')}}</div> 
+        <img rounded-16px w="200px" h="120px" inline-block blur="0.5"  :src="playListStore.selectItem?.al?.picUrl" v-if="playListStore.selectItem?.al?.picUrl"/>
+        <div text="#24242e dark:white 24px" font-700 my-4px>{{playListStore.selectItem?.name}}</div>
+        <div text="#4d4d56 16px" font-500 mb-8px>{{playListStore.selectItem?.ar?.map((p:any)=>p.name).join('/')}}</div> 
         <n-slider  :tooltip="false" v-model:value="slider" :on-update:value="updateSlider" />
         <div flex items-center justify-between text-14px  mt-6px>
           <span text="#4343ef">{{currentTimeFormat}}</span>
