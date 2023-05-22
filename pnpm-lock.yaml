@@ -7,6 +7,7 @@ specifiers:
   '@iconify-json/heroicons': ^1.1.10
   '@iconify-json/jam': ^1.1.4
   '@iconify-json/material-symbols': ^1.1.42
+  '@iconify/json': ^2.2.68
   '@intlify/vite-plugin-vue-i18n': ^6.0.3
   '@types/markdown-it-link-attributes': ^3.0.1
   '@types/nprogress': ^0.2.0
@@ -62,6 +63,7 @@ dependencies:
   '@iconify-json/eos-icons': 1.1.6
   '@iconify-json/jam': 1.1.4
   '@iconify-json/material-symbols': 1.1.42
+  '@iconify/json': 2.2.68
   '@types/qrcode': 1.5.0
   '@unocss/reset': 0.47.6
   '@vueuse/core': 9.13.0_vue@3.3.4
@@ -2065,6 +2067,13 @@ packages:
     resolution: {integrity: sha512-GVCi+035oCXCjpzTzjBx/Qgnsv4B2iJcLQCRqhNuY/Le9BmvHVg2+dHGMWc6iBgspjWu11SzRnz4wfs3XJGp1w==}
     dependencies:
       '@iconify/types': 2.0.0
+    dev: false
+
+  /@iconify/json/2.2.68:
+    resolution: {integrity: sha512-UNgbecms1tWhvY9ycXbWW/nOLlx5Xxlufp+dHWontty0j+yiQfap3UshpSGGAt74C9OLYEFKTl42d20PLRakzg==}
+    dependencies:
+      '@iconify/types': 2.0.0
+      pathe: 1.1.0
     dev: false
 
   /@iconify/types/2.0.0:
@@ -8099,7 +8108,6 @@ packages:
 
   /pathe/1.1.0:
     resolution: {integrity: sha512-ODbEPR0KKHqECXW1GoxdDb+AZvULmXjVPy4rt+pGo2+TnjJTIPJQSVS6N63n8T2Ip+syHhbn52OewKicV0373w==}
-    dev: true
 
   /pathval/1.1.1:
     resolution: {integrity: sha512-Dp6zGqpTdETdR63lehJYPeIOqpiNBNtc7BpWSLrOje7UaIsE5aY92r/AunQA7rsXvet3lrJ3JnZX29UPTKXyKQ==}
