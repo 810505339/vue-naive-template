@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { instance } from '~/api'
 import dayjs from 'dayjs'
-import usePlayingList from '~/store/modules/playingList';
+import usePlayingList,{PlayModel} from '~/store/modules/playingList';
 // 热歌榜
 const { data } = useAxios('/playlist/detail?id=3778678', instance)
 const playList = computed(() => {
@@ -88,8 +88,23 @@ const playModelIcon=computed(()=>{
     return playModelIconList[playListStore.playmodel]
 })
 
+//监听进度条
 watch(()=>currentTime.value,()=>{
   slider.value=(currentTime.value/duration.value) *100
+  //如果播放完毕
+  if(currentTime.value===duration.value)
+  {
+    //如果是单曲循环就再次播放
+    if(playListStore.playmodel===PlayModel.loop)
+    {
+      currentTime.value=0
+      setTimeout(()=>{
+        playing.value=true
+      },200)
+      return 
+    }
+    playListStore.next()
+  }
 })
 
 
@@ -150,11 +165,11 @@ watch(()=>currentTime.value,()=>{
 
 
           <div text="#4343ef"  flex items-center min-w="150px" justify-between>
-            <i icon-btn i-ic:baseline-skip-previous text-28px></i>
+            <i icon-btn i-ic:baseline-skip-previous text-28px @click="playListStore.previous"></i>
             <div w="42px" h="42px" bg="#4343ef" rounded-full flex items-center justify-center @click="changePlay">
-              <i icon-btn  text="white 25px"  :class="[playIcon]"></i>
+              <i icon-btn  text="white 25px"  :class="[playIcon]" ></i>
             </div>
-            <i icon-btn i-ic:baseline-skip-next text-28px></i>
+            <i icon-btn i-ic:baseline-skip-next text-28px @click="playListStore.next"></i>
           </div>
           <n-popover trigger="hover" :show-arrow="false">
             <template #trigger>

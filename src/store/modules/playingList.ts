@@ -1,6 +1,6 @@
 import { defineStore } from 'pinia'
 
-enum PlayModel {
+export enum PlayModel {
   shuffle, // 随机
   circulate, // 循环
   loop, // 单曲循环
@@ -10,10 +10,10 @@ const usePlayingList = defineStore('playingList', () => {
   // 正在播放列表
   const playingList = ref<Array<any>>([])
   // 正在播放的index
-  const selectIndex = ref('')
+  const selectIndex = ref<string | number>('')
 
   const selectItem = computed(() => {
-    return playingList.value[selectIndex.value]
+    return playingList.value[selectIndex.value as number]
   })
 
   // 播放模式
@@ -49,12 +49,12 @@ const usePlayingList = defineStore('playingList', () => {
     }
 
     // 正常模式
-    if (selectIndex.value === playingList.value.length - 1) {
+    if (selectIndex.value === 0) {
       // 最后一首歌
-      selectIndex.value = 0
+      selectIndex.value = playingList.value.length - 1
       return
     }
-    selectIndex.value += 1
+    (selectIndex.value as number) -= 1
   }
 
   // 下一曲
@@ -65,21 +65,22 @@ const usePlayingList = defineStore('playingList', () => {
       return
     }
     // 正常模式
-    if (selectIndex.value === 0) {
+    if (selectIndex.value === playingList.value.length - 1) {
       // 最后一首歌
-      selectIndex.value = playingList.value.length - 1
+      selectIndex.value = 0
       return
     }
-    selectIndex.value -= 1
+    (selectIndex.value as number) += 1
   }
 
   // 随机播放
   function shufflePlay() {
     // 切换的时候如果是随机模式
 
-    const tempList = playingList.value.filter((_, index) => index === selectIndex.value)
+    const tempList = playingList.value.filter((_, index) => index !== selectIndex.value)
     // 选中歌曲 然后设置播放它
     const findItem = tempList[Math.floor(Math.random() * tempList.length)]
+    console.log(tempList)
     playSong(findItem)
   }
   return {
