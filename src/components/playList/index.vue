@@ -113,7 +113,7 @@ watch(()=>currentTime.value,()=>{
 
 <template>
   
-  <div @click="playListStore.clear">{{playListStore.selectItem}}</div>
+  
   
   <audio ref="audio" hidden></audio>
   <div fixed z-10 w="400px" right="0" top="80px" rounded-tl-3xl h="100%" bg=" white dark:#18181c"  pt="20px">
