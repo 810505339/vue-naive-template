@@ -12,6 +12,10 @@ const usePlayingList = defineStore('playingList', () => {
   // 正在播放的index
   const selectIndex = ref(0)
 
+  const selectItem = computed(() => {
+    return playingList.value[selectIndex.value]
+  })
+
   // 播放模式
   const playmodel = ref(PlayModel.circulate)
 
@@ -24,6 +28,7 @@ const usePlayingList = defineStore('playingList', () => {
       selectIndex.value = len - 1
     }
     else {
+      playingList.value[index] = play
       selectIndex.value = index
     }
     // 找到了设置正在播放的id
@@ -75,13 +80,15 @@ const usePlayingList = defineStore('playingList', () => {
     const findItem = tempList[Math.floor(Math.random() * tempList.length)]
     playSong(findItem)
   }
-
   return {
     playingList,
     playSong,
     clear,
     previous,
     next,
+    playmodel,
+    selectIndex,
+    selectItem,
   }
 }, {
   persist: true,
