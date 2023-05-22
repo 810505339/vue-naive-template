@@ -5,5 +5,3 @@ router.push({
 })
 </script>
 
-<template />
-

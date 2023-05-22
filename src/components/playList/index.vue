@@ -9,9 +9,45 @@ const playList = computed(() => {
 function durationStr(dt:number){
   return dayjs(dt).format('mm:ss')
 }
+
+const audio = ref()
+const { playing, currentTime, duration, volume } = useMediaControls(audio, { 
+  src: 'http://m801.music.126.net/20230522172407/4f6919bad3b81387e20455456503836b/jdymusic/obj/wo3DlMOGwrbDjj7DisKw/25358070960/0c23/1e94/f335/e256582282cad4d51161905234e4dd08.mp3',
+})
+
+const slider=ref(0)
+
+function changePlay(){
+  playing.value = !playing.value
+}
+
+function updateSlider(value: number){
+  console.log((value*duration.value)/100);
+  slider.value=value;
+  currentTime.value=(value*duration.value)/100
+}
+
+const playIcon=computed(()=>{
+  return !playing.value?`i-ic:baseline-play-arrow`:`i-ic:baseline-pause`
+})
+
+const currentTimeFormat=computed(()=>{
+  return dayjs.unix(currentTime.value).format('mm:ss')
+})
+
+const durationFormat=computed(()=>{
+  return dayjs.unix(duration.value).format('mm:ss')
+})
+
+watch(()=>currentTime.value,()=>{
+  slider.value=(currentTime.value/duration.value) *100
+})
+
 </script>
 
 <template>
+  {{currentTime/duration}}
+  <audio ref="audio" hidden></audio>
   <div fixed z-10 w="400px" right="0" top="80px" rounded-tl-3xl h="100%" bg=" white dark:#18181c"  pt="20px">
     <div >
       <div flex items-center justify-between px="24px">
@@ -45,18 +81,18 @@ function durationStr(dt:number){
         <img rounded-16px w="200px" h="120px" inline-block blur="0.5"  src="https://img.js.design/assets/img/643c115759a24ca2f6d8cc0b.webp#08a09d56643a5eb848271d4c4dceb8c6"/>
         <div text="#24242e dark:white 24px" font-700 my-4px>Dynamite</div>
         <div text="#4d4d56 16px" font-500 mb-8px>BTS</div> 
-        <n-slider  :tooltip="false" />
+        <n-slider  :tooltip="false" v-model:value="slider" :on-update:value="updateSlider" />
         <div flex items-center justify-between text-14px  mt-6px>
-          <span text="#4343ef">2:18</span>
-          <span>4:15</span>
+          <span text="#4343ef">{{currentTimeFormat}}</span>
+          <span>{{durationFormat}}</span>
         </div>
 
         <div flex items-center w="100%" justify-between >
           <i icon-btn i-ic:sharp-shuffle text="#b4b4f8 20px"></i>
           <div text="#4343ef " flex items-center min-w="200px" justify-between>
             <i icon-btn i-ic:baseline-skip-previous text-28px></i>
-            <div w="42px" h="42px" bg="#4343ef" rounded-full flex items-center justify-center>
-              <i icon-btn i-ic:baseline-play-arrow text="white 25px"></i>
+            <div w="42px" h="42px" bg="#4343ef" rounded-full flex items-center justify-center @click="changePlay">
+              <i icon-btn  text="white 25px"  :class="[playIcon]"></i>
             </div>
             <i icon-btn i-ic:baseline-skip-next text-28px></i>
           </div>
@@ -74,10 +110,7 @@ function durationStr(dt:number){
 
 
 :global(.n-slider .n-slider-handles .n-slider-handle-wrapper .n-slider-handle) {
-  width: 12px;
-  height: 12px;
-  visibility:hidden;
-  transition: all 0.3s;
+  
 }
 
 :global(.n-slider .n-slider-handles:hover .n-slider-handle){
