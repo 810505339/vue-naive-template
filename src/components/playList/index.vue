@@ -15,12 +15,12 @@ const playListStore = usePlayingList()
 const audio = ref()
 const src=ref(playListStore.selectItem?.url)
 //切换歌曲
-
 const { playing, currentTime, duration, volume } = useMediaControls(audio, { 
   src:src
 })
 
 watch(()=>playListStore.selectIndex,()=>{
+ 
   playing.value=false
   src.value=playListStore.selectItem.url
   setTimeout(()=>{
@@ -43,23 +43,13 @@ function changeModel(){
 }
 //点击拉动歌曲进度条
 function updateSlider(value: number){
-  console.log((value*duration.value)/100);
+
   slider.value=value
   currentTime.value=(value*duration.value)/100
   playing.value=true
 }
-//?id=2026224214&level=exhigh
-const getMusicUrl=useAxios('/song/url/v1',instance,{immediate:false })
 //点击top100单曲
 async function playMusic(play:any){
- const {data}=await getMusicUrl.execute({
-   params:{
-    id:play.id,
-    level:'standard'
-   }
-  })
-  const url=data.value.data[0].url
-  play.url=url
   playListStore.playSong(play)
   currentTime.value=0;
   playing.value=true;

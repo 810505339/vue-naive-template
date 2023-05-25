@@ -1,4 +1,5 @@
 import { defineStore } from 'pinia'
+import { instance } from '~/api'
 
 export enum PlayModel {
   shuffle, // 随机
@@ -11,6 +12,10 @@ const usePlayingList = defineStore('playingList', () => {
   const playingList = ref<Array<any>>([])
   // 正在播放的index
   const selectIndex = ref<string | number>('')
+  // 获取歌曲 因为歌曲链接会过期
+
+  // ?id=2026224214&level=exhigh
+  const { execute, data } = useAxios('/song/url/v1', instance, { immediate: false })
 
   const selectItem = computed(() => {
     return playingList.value[selectIndex.value as number]
@@ -20,7 +25,15 @@ const usePlayingList = defineStore('playingList', () => {
   const playmodel = ref(PlayModel.circulate)
 
   // 播放歌曲
-  function playSong(play: any) {
+  async function playSong(play: any) {
+    await execute({
+      params: {
+        id: play.id,
+        level: 'standard',
+      },
+    })
+
+    play.url = data.value?.data?.[0].url
     const index = playingList.value.findIndex((p: any) => p.id === play.id)
     // 没找到
     if (!~index) {
@@ -83,6 +96,7 @@ const usePlayingList = defineStore('playingList', () => {
     console.log(tempList)
     playSong(findItem)
   }
+
   return {
     playingList,
     playSong,
