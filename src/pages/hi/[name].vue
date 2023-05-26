@@ -1,12 +1,11 @@
 <script setup lang="ts">
-import { m } from 'vitest/dist/index-5aad25c1'
-
+import { v4 as uuidv4 } from 'uuid'
 const showModal = ref(false)
 const list = ref(
   [
     {
       label: 'A',
-      id: `${new Date()}`,
+      id: uuidv4(),
       children: [
         {},
         {},
@@ -52,7 +51,6 @@ function add(item: {
 function save() {
   const index = list.value.findIndex(l => l.id === selectItem.value?.id)
   console.log(selectItem.value?.id)
-  
 
   // 如果点击相同
   if (selectItem.value!.label === selected.value) { // 找到了
@@ -64,9 +62,9 @@ function save() {
     // 判断是否是最后一个
 
     if (selectIndex.value === list.value[index].children.length - 1) {
-      list.value.push({
+      list.value.splice(index + 1, 0, {
         label: selected.value,
-        id: `${new Date()}${new Date()}`,
+        id: uuidv4(),
         children: [{}],
       })
     }
@@ -76,12 +74,12 @@ function save() {
       list.value[index].children = list.value[index].children.slice(0, selectIndex.value + 1)
       list.value.splice(index + 1, 0, {
         label: selected.value,
-        id: `${new Date()}`,
+        id: uuidv4(),
         children: [{}],
       })
       list.value.splice(index + 2, 0, {
         label: list.value[index].label,
-        id: `${new Date()}`,
+        id: uuidv4(),
         children: [...tempChildren],
       })
     }
